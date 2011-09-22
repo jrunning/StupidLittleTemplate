@@ -126,7 +126,7 @@ FAQ
 Credits
 -------
 The [regular expression] for extracting teplate variables is adapted from [this
-StackOverflow answer] by [rjk].
+StackOverflow answer][SO] by [rjk].
 
 [regular expression]: https://github.com/jrunning/StupidLittleTemplate/blob/master/lib/stupid_little_template.rb#L2
 [SO]:   http://stackoverflow.com/questions/3648551/regex-that-matches-valid-ruby-local-variable-names/3648591#3648591
