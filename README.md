@@ -1,5 +1,6 @@
 StupidLittleTemplate is a really dumb templating "system" currently clocking in
-around 20 lines. It has no dependencies.
+under 20 lines. It has no dependencies and is probably horribly dangerous to use
+under any circumstances.
 
 Usage
 -----
@@ -125,7 +126,7 @@ FAQ
 
 Credits
 -------
-The [regular expression] for extracting teplate variables is adapted from [this
+The [regular expression] for extracting template variables is adapted from [this
 StackOverflow answer][SO] by [rjk].
 
 [regular expression]: https://github.com/jrunning/StupidLittleTemplate/blob/master/lib/stupid_little_template.rb#L2
