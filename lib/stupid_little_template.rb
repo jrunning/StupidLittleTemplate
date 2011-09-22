@@ -9,7 +9,8 @@ module StupidLittleTemplate
       out_str = template.clone
 
       tmpl_params.reduce(out_str) do |str, param|
-        if eval "defined? #{param[1]}", bndng
+        test =  "defined?(#{param[1]}) or respond_to?(:'#{param[1].to_sym}')"
+        if eval test, bndng
           str.gsub(param[0],
             eval(param[1], bndng).to_s
           )
