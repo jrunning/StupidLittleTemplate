@@ -14,12 +14,7 @@ context "A basic template proc" do
   end
 
   asserts_topic.kind_of Proc
-  
-  context "called" do
-    setup { t = topic.yield; puts t; t }
-    asserts_topic.kind_of String
-    asserts_topic.equals 'FOO BAR BAZ QUX QUUX'
-  end
+  asserts_topic.yields 'FOO BAR BAZ QUX QUUX'
 end
 
 context "A template with lots of noise" do
@@ -55,10 +50,25 @@ context "A template that has possible keys that aren't defined" do
     foo = 'FOO'
     bar = 'BAR'
 
-    sltmpl(tmpl, binding).yield
+    sltmpl tmpl, binding
   end
 
-  asserts_topic.equals 'FOO :xyzzyBAR FOO'
+  asserts_topic.yields 'FOO :xyzzyBAR FOO'
+
+  context 'but are handled by method_missing' do
+    helper(:method_missing) {|meth, *args, &block|
+      meth == :xyzzy ? 'XYZZY' : super(meth, *args, block)
+    }
+    helper(:respond_to?) {|meth|
+      meth == :xyzzy || super(meth)
+    }
+    setup {
+      foo = 'FOO'; bar = 'BAR'
+      topic
+    }
+
+    asserts_topic.yields 'FOO XYZZYBAR FOO'
+  end
 end
 
 # How to handle this? Escape/stop character?
@@ -69,8 +79,8 @@ context "A template with keys adjacent to keylike characters" do
     width   = 800
     height  = 600
 
-    sltmpl(tmpl, binding).yield
+    sltmpl tmpl, binding
   end
 
-  asserts_topic.equals { "800x600" }
+  asserts_topic.yields { "800x600" }
 end
