@@ -1,5 +1,4 @@
 module StupidLittleTemplate
-  # http://stackoverflow.com/questions/3648551/regex-that-matches-valid-ruby-local-variable-names/3648591#3648591
   SLTParamExp = /(:((?:\$|@{1,2})?[A-Za-z_][A-Za-z0-0]*))/
 
   def sltmpl template, bndng
