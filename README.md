@@ -97,7 +97,7 @@ FAQ
 
     **A:** You get `:fooquuxBAR`. There's a [failing test] for this.
 
-[failing test]: https://github.com/jrunning/StupidLittleTemplate/blob/master/test/template_test.rb#L64-76
+[failing test]: https://github.com/jrunning/StupidLittleTemplate/blob/master/test/template_test.rb#L74-86
 
 
 * **Q: Can I pass in a `Hash` of values instead of exposing all the locals?**
