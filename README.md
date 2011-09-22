@@ -66,7 +66,7 @@ end
 
 k = Klass.new 'Alice', 29
 
-sltmpl('My name is :@name and I'm :@age years old.', k.my_binding).yield
+sltmpl("My name is :@name and I'm :@age years old.", k.my_binding).yield
 # => My name is Alice and I'm 29 years old.
 ```
 
