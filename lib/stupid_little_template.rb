@@ -6,15 +6,11 @@ module StupidLittleTemplate
     tmpl_params = template.scan(SLTParamExp)
 
     proc {
-      out_str = template.clone
+      tmpl_params.reduce(template.clone) do |str, param|
+        test = "defined?(#{param[1]}) or respond_to?(:'#{param[1].to_sym}')"
 
-      tmpl_params.reduce(out_str) do |str, param|
-        test =  "defined?(#{param[1]}) or respond_to?(:'#{param[1].to_sym}')"
-        if eval test, bndng
-          str.gsub(param[0],
-            eval(param[1], bndng).to_s
-          )
-        else str end
+        eval(test, bndng) ? 
+          str.gsub(param[0], eval(param[1], bndng).to_s) : str
       end
     }
   end
