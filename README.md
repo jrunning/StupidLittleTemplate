@@ -39,7 +39,7 @@ class Klass
   @@class_var   = 'StupidLittleTemplate'
 
   def foo
-    sltmpl ':Constant :$global_var @instance_var @@class_var', binding
+    sltmpl ':Constant :$global_var :@instance_var :@@class_var', binding
   end
 end
 
